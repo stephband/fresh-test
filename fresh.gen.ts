@@ -10,8 +10,8 @@ import * as $3 from "./routes/form.jsx";
 import * as $4 from "./routes/handler-json.js";
 import * as $5 from "./routes/handler.jsx";
 import * as $6 from "./routes/html.js";
-import * as $7 from "./routes/index.tsx";
-import * as $$0 from "./islands/Counter.tsx";
+import * as $7 from "./routes/index.js";
+import * as $8 from "./routes/template.js";
 
 const manifest = {
   routes: {
@@ -22,11 +22,10 @@ const manifest = {
     "./routes/handler-json.js": $4,
     "./routes/handler.jsx": $5,
     "./routes/html.js": $6,
-    "./routes/index.tsx": $7,
+    "./routes/index.js": $7,
+    "./routes/template.js": $8,
   },
-  islands: {
-    "./islands/Counter.tsx": $$0,
-  },
+  islands: {},
   baseUrl: import.meta.url,
   config,
 };

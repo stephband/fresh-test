@@ -1,0 +1,21 @@
+
+${ include('/templates/document/head.html', '/data/head.json') }
+
+<h1>Test template</h1>
+
+<h2>request</h2>
+<pre>
+$\{ request.method }  ${ request.method }
+$\{ request.url }     ${ request.url }
+$\{ request.headers } ${ request.headers }
+</pre>
+
+<h2>data</h2>
+<pre>${ data } ${data.params.arse}</pre>
+
+<h2>this</h2>
+<pre>${ this }</pre>
+
+<img src="/test/images/arse.png" width="300"/>
+
+${ include('./document/foot.html', data) }

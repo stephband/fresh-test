@@ -1,4 +1,27 @@
 
+import compileTemplate from '../lib/literal/deno/compile-template.js';
+
+const cwd = Deno.cwd();
+
+export function template(src) {
+    const path    = cwd + src;
+    const promise = compileTemplate(path);
+
+    return (request, context) => promise.then((render) =>
+        render(request, context.state)
+        .then((html) => new Response(html, {
+                headers: {
+                    "Content-Type": "text/html"
+                }
+            })
+        )
+    );
+}
+
+
+
+
+
 export function html(strings, ...values) {
     const html = String.raw({ raw: strings }, ...values);
 

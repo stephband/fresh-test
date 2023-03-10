@@ -1,0 +1,12 @@
+[submodule "static/fn"]
+	path = lib/fn
+	url = git@github.com:stephband/fn.git
+[submodule "static/dom"]
+	path = lib/dom
+	url = git@github.com:stephband/dom.git
+[submodule "static/bolt"]
+	path = static/bolt
+	url = git@github.com:stephband/bolt-2.git
+[submodule "lib/literal"]
+	path = lib/literal
+	url = git@github.com:stephband/literal
