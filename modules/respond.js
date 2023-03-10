@@ -8,7 +8,7 @@ export function template(src) {
     const promise = compileTemplate(path);
 
     return (request, context) => promise.then((render) =>
-        render(request, context.state)
+        render(request, context.state, context.params)
         .then((html) => new Response(html, {
                 headers: {
                     "Content-Type": "text/html"
