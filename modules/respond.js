@@ -1,15 +1,23 @@
 
-import compileTemplate from '../lib/literal/deno/compile-template.js';
+import compile from '../static/literal/deno/compile-template.js';
 
-const cwd = Deno.cwd();
+const cwd  = Deno.cwd();
 
 export function template(src) {
-    const path    = cwd + src;
-    const promise = compileTemplate(path);
+    const head    = compile(cwd + '/templates/document/head.html');
+    const body    = compile(cwd + src);
+    const foot    = compile(cwd + '/templates/document/foot.html');
+    const promise = Promise.all([head, body, foot]);
 
-    return (request, context) => promise.then((render) =>
-        render(request, context.state, context.params)
-        .then((html) => new Response(html, {
+    return (request, context) => promise.then(([head, body, foot]) =>
+        body(request, context.state, context.params)
+        .then((html) => Promise.all([
+            head(request, context.state, context.params),
+            html,
+            foot(request, context.state, context.params)
+        ]))
+        .then((parts) =>
+            new Response(parts.join(''), {
                 headers: {
                     "Content-Type": "text/html"
                 }

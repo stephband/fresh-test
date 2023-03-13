@@ -1,0 +1,48 @@
+
+${
+    /* TODO this is a temporary addtoblock */
+    request.stylesheets = ['/player/module.css'],
+    request.scripts     = [
+        '/player/module.js',
+        '/player/player.js'
+    ],
+    ''
+}
+
+<div class="play-block block">
+    <audio controls id="audio"></audio>
+    <input type="range" name="rate" min="0.5" max="2" step="0.1" value="1" />
+</div>
+
+<ul class="list">
+${
+// Turn files into an artist-album/track tree
+data.reduce((albums, file) => {
+    let album    = last(albums);
+    let previous = last(album);
+
+    if (previous && (file.artist + '>' + file.album) !== (previous.artist + '>' + previous.album)) {
+        // New album!
+        album = [];
+        albums.push(album);
+    }
+
+    album.push(file);
+    return albums;
+}, [[]])
+// Render albums as separate lists
+.map((album) => `<li>
+        <a class="album-button button" href="#${ slugify(album[0].artist + '–' + album[0].album) }">
+            <span class="artist-text">${ album[0].artist }</span>
+            <span class="punctuation-text">–</span>
+            <span class="album-text">${ album[0].album }</span>
+        </a>
+
+        <ul class="track-list list toggle-block block" data-toggleable id="${ slugify(album[0].artist + '–' + album[0].album) }">
+            ${ album.map((file) => `<li>
+                <button class="title-button button" name="cue" value="${ file.path + file.name }" id="${ slugify(album[0].artist + '–' + album[0].album + '–' + file.title) }">${ file.title } <small>${ file.ext }</small></button>
+            </li>`).join('') }
+        </ul>
+    </li>`
+) }
+</ul>

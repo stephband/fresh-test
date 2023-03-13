@@ -6,24 +6,36 @@ import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/[username].js";
 import * as $1 from "./routes/_404.js";
 import * as $2 from "./routes/_500.js";
-import * as $3 from "./routes/form.jsx";
-import * as $4 from "./routes/handler-json.js";
-import * as $5 from "./routes/handler.jsx";
-import * as $6 from "./routes/html.js";
-import * as $7 from "./routes/index.js";
-import * as $8 from "./routes/template.js";
+import * as $3 from "./routes/_middleware.js";
+import * as $4 from "./routes/authenticated.js";
+import * as $5 from "./routes/files/_middleware.js";
+import * as $6 from "./routes/form.jsx";
+import * as $7 from "./routes/handler-json.js";
+import * as $8 from "./routes/handler.jsx";
+import * as $9 from "./routes/html.js";
+import * as $10 from "./routes/index.js";
+import * as $11 from "./routes/login.js";
+import * as $12 from "./routes/logout.js";
+import * as $13 from "./routes/player.js";
+import * as $14 from "./routes/template.js";
 
 const manifest = {
   routes: {
     "./routes/[username].js": $0,
     "./routes/_404.js": $1,
     "./routes/_500.js": $2,
-    "./routes/form.jsx": $3,
-    "./routes/handler-json.js": $4,
-    "./routes/handler.jsx": $5,
-    "./routes/html.js": $6,
-    "./routes/index.js": $7,
-    "./routes/template.js": $8,
+    "./routes/_middleware.js": $3,
+    "./routes/authenticated.js": $4,
+    "./routes/files/_middleware.js": $5,
+    "./routes/form.jsx": $6,
+    "./routes/handler-json.js": $7,
+    "./routes/handler.jsx": $8,
+    "./routes/html.js": $9,
+    "./routes/index.js": $10,
+    "./routes/login.js": $11,
+    "./routes/logout.js": $12,
+    "./routes/player.js": $13,
+    "./routes/template.js": $14,
   },
   islands: {},
   baseUrl: import.meta.url,

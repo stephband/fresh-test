@@ -1,6 +1,4 @@
 
-${ include('/templates/document/head.html', '/data/head.json') }
-
 <h1>Test template</h1>
 
 <h2>request</h2>
@@ -8,6 +6,7 @@ ${ include('/templates/document/head.html', '/data/head.json') }
 $\{ request.method }  ${ request.method }
 $\{ request.url }     ${ request.url }
 $\{ request.headers } ${ request.headers }
+$\{ request.isAuthenticated } ${ request.isAuthenticated }
 </pre>
 
 <h2>data</h2>
@@ -20,5 +19,3 @@ $\{ request.headers } ${ request.headers }
 <pre>${ this }</pre>
 
 <img src="/test/images/arse.png" width="300"/>
-
-${ include('./document/foot.html', data) }
