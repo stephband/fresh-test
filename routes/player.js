@@ -14,7 +14,7 @@ export const handler = {
 
         files.forEach((file) => {
             file.path   = file.path.slice(musicdir.length);
-            file.title  = file.name.replace(/\..+$/, '');
+            file.title  = file.name.replace(/\.[^\.]+$/, '');
             file.ext    = file.name.replace(/^.+\./, '');
             file.artist = file.path.replace(/\/.+\/$/, '');
             file.album  = file.path.slice(file.artist.length + 1).replace(/\/$/, '');

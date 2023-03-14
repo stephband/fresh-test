@@ -10,8 +10,16 @@ ${
 }
 
 <div class="play-block block">
+    <p>
+        <span class="track-text" id="loaded-track"></span>
+        &nbsp; &nbsp;
+        <a class="artist-text text-09" id="loaded-artist"></a>
+        <span class="punctuation-text text-09">–</span>
+        <a class="album-text text-09" id="loaded-album"></a>
+    </p>
+
     <audio controls id="audio"></audio>
-    <input type="range" name="rate" min="0.5" max="2" step="0.1" value="1" />
+    <!--input type="range" name="rate" min="0.5" max="2" step="0.1" value="1" /-->
 </div>
 
 <ul class="list">
@@ -31,7 +39,7 @@ data.reduce((albums, file) => {
     return albums;
 }, [[]])
 // Render albums as separate lists
-.map((album) => `<li>
+.map((album) => `<li id="${ slugify(album[0].artist) }">
         <a class="album-button button" href="#${ slugify(album[0].artist + '–' + album[0].album) }">
             <span class="artist-text">${ album[0].artist }</span>
             <span class="punctuation-text">–</span>
@@ -46,3 +54,7 @@ data.reduce((albums, file) => {
     </li>`
 ) }
 </ul>
+
+<script>
+window.tracks = ${ JSON.stringify(data.map(({ path, name, title, ext, album, artist }) => ({ path, name, title, ext, album, artist }))) };
+</script>

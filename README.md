@@ -1,11 +1,9 @@
-# fresh project
+#
 
 ### Usage
 
 Start the project:
 
 ```
-deno task start
+deno run --allow-net --allow-read --allow-env --allow-run --watch=static/,routes/,templates/,modules/ main.ts
 ```
-
-This will watch the project directory and restart as necessary.

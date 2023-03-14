@@ -3,10 +3,32 @@ body > .play-block {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: inherit;
-    border-bottom: 1px solid #111111;
 }
 
 .play-block {
-    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    padding-top: 0.75rem;
+    padding-bottom: 0.9375rem;
+    min-height: 4.5rem;
+    background-color: #161616;
+    border-bottom: 1px solid #000000;
+}
+
+.play-block > * {
+    margin: auto;
+}
+
+.play-block > audio {
+    margin-top: 0.75rem;
+    width: 50%;
+}
+
+
+
+
+.text-09 {
+    font-size: 0.8125rem;
 }

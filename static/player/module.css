@@ -1,7 +1,7 @@
 
+@import '/bolt/elements/root.css';
 @import '/bolt/elements/html.css';
 @import '/bolt/elements/body.css';
-@import '/bolt/elements/root.css';
 @import '/bolt/elements/a.css';
 @import '/bolt/elements/type.css';
 
@@ -13,6 +13,10 @@
 @import '/player/classes/play-block.css';
 @import '/player/classes/album-list.css';
 
+html {
+    scroll-padding-top: 3.75rem;
+}
+
 html,
 body {
     color: #eeeeee;
@@ -21,4 +25,8 @@ body {
 
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+[href] {
+    text-decoration: none;
 }
