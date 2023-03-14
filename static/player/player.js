@@ -9,22 +9,30 @@ const album  = document.getElementById('loaded-album');
 const artist = document.getElementById('loaded-artist');
 const audio  = document.getElementById('audio');
 
+const state = {};
+
+function play(file) {
+    audio.src = '/files/' + file.path + file.name;
+    audio.play();
+
+    track.innerHTML  = file.title;
+
+    album.innerHTML  = file.album;
+    album.href       = '#' + slugify(file.artist + '–' + file.album);
+
+    artist.innerHTML = file.artist;
+    artist.href      = '#' + slugify(file.artist);
+
+    state.file = file;
+}
+
 events('click', document)
 .each(delegate({
     '[name="cue"]': function(button, e) {
         const filepath = button.value;
-        audio.src = '/files/' + filepath;
-        audio.play();
-
         const file = tracks.find((file) => filepath === (file.path + file.name));
-        //console.log(filepath, file);
-        track.innerHTML  = file.title;
 
-        album.innerHTML  = file.album;
-        album.href       = '#' + slugify(file.artist + '–' + file.album);
-
-        artist.innerHTML = file.artist;
-        artist.href      = '#' + slugify(file.artist);
+        play(file);
     },
 
     '.album-text[href]': function(button, e) {
@@ -42,3 +50,11 @@ events('input', document)
         audio.playbackRate = parseFloat(input.value);
     }
 }));
+
+events('ended', audio)
+.each((e) => {
+    const i    = tracks.indexOf(state.file);
+    const file = tracks[i + 1];
+
+    play(file);
+});

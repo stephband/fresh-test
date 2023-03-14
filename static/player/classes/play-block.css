@@ -23,11 +23,9 @@ body > .play-block {
 
 .play-block > audio {
     margin-top: 0.75rem;
-    width: 50%;
+    width: calc(100% - 1.875rem);
+    max-width: 50%;
 }
-
-
-
 
 .text-09 {
     font-size: 0.8125rem;

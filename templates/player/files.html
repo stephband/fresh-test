@@ -56,5 +56,9 @@ data.reduce((albums, file) => {
 </ul>
 
 <script>
-window.tracks = ${ JSON.stringify(data.map(({ path, name, title, ext, album, artist }) => ({ path, name, title, ext, album, artist }))) };
+window.tracks = ${
+    JSON.stringify(data.map(({ path, name, title, ext, album, artist }) =>
+        ({ path, name, title, ext, album, artist })
+    ))
+};
 </script>
