@@ -1,0 +1,4 @@
+#!/bin/bash
+cd ~/Sites/fresh-test-project/
+(sleep 0.5 && open -a Safari http://localhost:3000/player) &
+deno run --allow-net --allow-read --allow-env --allow-run main.ts
